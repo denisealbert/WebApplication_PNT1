@@ -58,6 +58,7 @@ namespace WebApplication_PNT1.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 _context.Add(pedido);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -155,3 +156,4 @@ namespace WebApplication_PNT1.Controllers
         }
     }
 }
+

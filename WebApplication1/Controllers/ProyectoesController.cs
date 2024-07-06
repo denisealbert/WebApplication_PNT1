@@ -22,8 +22,7 @@ namespace WebApplication_PNT1.Controllers
         // GET: Proyectoes
         public async Task<IActionResult> Index()
         {
-            var webAppDatabaseContext = _context.Proyectos.Include(p => p.Pedido);
-            return View(await webAppDatabaseContext.ToListAsync());
+            return View(await _context.Proyectos.ToListAsync());
         }
 
         // GET: Proyectoes/Details/5
@@ -35,7 +34,6 @@ namespace WebApplication_PNT1.Controllers
             }
 
             var proyecto = await _context.Proyectos
-                .Include(p => p.Pedido)
                 .FirstOrDefaultAsync(m => m.IdProyecto == id);
             if (proyecto == null)
             {
@@ -48,7 +46,6 @@ namespace WebApplication_PNT1.Controllers
         // GET: Proyectoes/Create
         public IActionResult Create()
         {
-            ViewData["PedidoId"] = new SelectList(_context.Pedidos, "IdPedido", "IdPedido");
             return View();
         }
 
@@ -57,15 +54,16 @@ namespace WebApplication_PNT1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdProyecto,Descripcion,Ancho,Alto,Groso,CantColores,Cantidad,PedidoId,FechaPedido,Tipo,CostoUnitario,CostoTotal")] Proyecto proyecto)
+        public async Task<IActionResult> Create([Bind("IdProyecto,Descripcion,Ancho,Alto,Groso,CantColores,Cantidad,FechaPedido,Tipo")] Proyecto proyecto)
         {
             if (ModelState.IsValid)
             {
+                proyecto.SetCostos();
                 _context.Add(proyecto);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "Pedido", new { id = proyecto.PedidoId });
             }
-            ViewData["PedidoId"] = new SelectList(_context.Pedidos, "IdPedido", "IdPedido", proyecto.PedidoId);
+            ViewBag.Pedidos = new SelectList(_context.Pedidos, "IdPedido", "Descripcion", proyecto.PedidoId);
             return View(proyecto);
         }
 
@@ -82,7 +80,6 @@ namespace WebApplication_PNT1.Controllers
             {
                 return NotFound();
             }
-            ViewData["PedidoId"] = new SelectList(_context.Pedidos, "IdPedido", "IdPedido", proyecto.PedidoId);
             return View(proyecto);
         }
 
@@ -91,7 +88,7 @@ namespace WebApplication_PNT1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdProyecto,Descripcion,Ancho,Alto,Groso,CantColores,Cantidad,PedidoId,FechaPedido,Tipo,CostoUnitario,CostoTotal")] Proyecto proyecto)
+        public async Task<IActionResult> Edit(int id, [Bind("IdProyecto,Descripcion,Ancho,Alto,Groso,CantColores,Cantidad,FechaPedido,Tipo")] Proyecto proyecto)
         {
             if (id != proyecto.IdProyecto)
             {
@@ -102,6 +99,7 @@ namespace WebApplication_PNT1.Controllers
             {
                 try
                 {
+                    proyecto.SetCostos();
                     _context.Update(proyecto);
                     await _context.SaveChangesAsync();
                 }
@@ -118,7 +116,6 @@ namespace WebApplication_PNT1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PedidoId"] = new SelectList(_context.Pedidos, "IdPedido", "IdPedido", proyecto.PedidoId);
             return View(proyecto);
         }
 
@@ -131,7 +128,6 @@ namespace WebApplication_PNT1.Controllers
             }
 
             var proyecto = await _context.Proyectos
-                .Include(p => p.Pedido)
                 .FirstOrDefaultAsync(m => m.IdProyecto == id);
             if (proyecto == null)
             {
@@ -162,3 +158,4 @@ namespace WebApplication_PNT1.Controllers
         }
     }
 }
+

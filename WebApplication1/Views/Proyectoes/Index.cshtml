@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h2>Proyectos personalizados</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Crear nuevo</a>
 </p>
 <table class="table">
     <thead>
@@ -16,80 +16,56 @@
                 @Html.DisplayNameFor(model => model.Descripcion)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ancho)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Alto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Groso)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CantColores)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cantidad)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Pedido)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaPedido)
+                Fecha creacion
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Tipo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CostoUnitario)
+                Precio por unidad
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CostoTotal)
+                Precio Total
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ancho)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Alto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Groso)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CantColores)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cantidad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Pedido.IdPedido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaPedido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tipo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CostoUnitario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CostoTotal)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdProyecto">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdProyecto">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdProyecto">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaPedido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tipo)
+                </td>
+                <td class="costo">
+                    @Html.DisplayFor(modelItem => item.CostoUnitario)
+                </td>
+                <td class="costo">
+                    @Html.DisplayFor(modelItem => item.CostoTotal)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdProyecto">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdProyecto">Detalle</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdProyecto">Eliminar</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<style>
+    .costo::before {
+        content: '$';
+        font-weight: bold;
+    }
+
+    .costo {
+        font-weight: bold;
+    }
+</style>

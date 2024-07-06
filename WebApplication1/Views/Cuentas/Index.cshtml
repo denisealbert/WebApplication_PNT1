@@ -1,41 +1,64 @@
 ﻿@model IEnumerable<WebApplication_PNT1.Models.Cuenta>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Cuenta";
 }
 
-<h1>Index</h1>
+<style>
+    .background {
+        background-image: url('https://img.freepik.com/free-vector/geometric-pattern-background-vector-white_53876-126684.jpg?w=900&t=st=1720292072~exp=1720292672~hmac=28524f67c1748ffe62dc2963aed77679dd2f15463c926d2e5d0124c03f6302c9');
+        background-size: cover;
+        background-position: center;
+        padding: 20px;
+        min-height: 100vh; /* Asegura que el fondo cubra toda la altura de la ventana */
+    }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Dni)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Clave)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Dni)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Clave)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdCuenta">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdCuenta">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdCuenta">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    h1, h2, p {
+        font-family: Monaco, monospace; /* Establece la fuente en monoespacio */
+        font-weight: bold;
+    }
+
+    th, a {
+        font-family: Helvetica, sans-serif; /* Establece la fuente en sans-serif Helvetica */
+        font-weight: bold;
+    }
+</style>
+
+<div class="background">
+    <h1>Cuenta</h1>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Dni)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Clave)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Dni)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Clave)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.IdCuenta">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.IdCuenta">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.IdCuenta">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

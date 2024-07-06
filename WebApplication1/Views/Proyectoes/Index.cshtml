@@ -4,62 +4,15 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Proyectos personalizados</h2>
-
-<p>
-    <a asp-action="Create">Crear nuevo</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Descripcion)
-            </th>
-            <th>
-                Fecha creacion
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tipo)
-            </th>
-            <th>
-                Precio por unidad
-            </th>
-            <th>
-                Precio Total
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Descripcion)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FechaPedido)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tipo)
-                </td>
-                <td class="costo">
-                    @Html.DisplayFor(modelItem => item.CostoUnitario)
-                </td>
-                <td class="costo">
-                    @Html.DisplayFor(modelItem => item.CostoTotal)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.IdProyecto">Editar</a> |
-                    <a asp-action="Details" asp-route-id="@item.IdProyecto">Detalle</a> |
-                    <a asp-action="Delete" asp-route-id="@item.IdProyecto">Eliminar</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-
 <style>
+    .background {
+        background-image: url('https://img.freepik.com/free-vector/geometric-pattern-background-vector-white_53876-126684.jpg?w=900&t=st=1720292072~exp=1720292672~hmac=28524f67c1748ffe62dc2963aed77679dd2f15463c926d2e5d0124c03f6302c9');
+        background-size: cover;
+        background-position: center;
+        padding: 20px;
+        min-height: 100vh; /* Asegura que el fondo cubra toda la altura de la ventana */
+    }
+
     .costo::before {
         content: '$';
         font-weight: bold;
@@ -68,4 +21,69 @@
     .costo {
         font-weight: bold;
     }
+    h1,h2,p {
+        font-family: Monaco, monospace; /* Establece la fuente en monoespacio */
+        font-weight: bold;
+        }
+th,a{
+        font-family: Helvetica, sans-serif; /* Establece la fuente en sans-serif Helvetica para h5 */
+        font-weight: bold;
+        }
 </style>
+
+<div class="background">
+    <h2>Proyectos personalizados</h2>
+
+    <p>
+        <a asp-action="Create">Crear nuevo</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descripcion)
+                </th>
+                <th>
+                    Fecha creación
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tipo)
+                </th>
+                <th>
+                    Precio por unidad
+                </th>
+                <th>
+                    Precio Total
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaPedido)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tipo)
+                    </td>
+                    <td class="costo">
+                        @Html.DisplayFor(modelItem => item.CostoUnitario)
+                    </td>
+                    <td class="costo">
+                        @Html.DisplayFor(modelItem => item.CostoTotal)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.IdProyecto">Editar</a> |
+                        <a asp-action="Details" asp-route-id="@item.IdProyecto">Detalle</a> |
+                        <a asp-action="Delete" asp-route-id="@item.IdProyecto">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

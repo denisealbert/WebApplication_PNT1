@@ -4,8 +4,11 @@
 
 <div class="background">
     <div class="text-center">
-        <h1 class="display-4">Bienvenido a Plastic Monkey</h1>
-        <h5>Mandanos tu proyecto personalizado!</h5>
+        <div class="title-with-image">
+            <h1 class="display-4">Bienvenido a Plastic Monkey</h1>
+            <img src="~/images/mono.jpg" alt="Mono" class="mono-image">
+        </div>
+        <h3>Mandanos tu proyecto personalizado!</h5>
         <p>Te mostramos algunos diseños ya disponibles:</p>
 
         <div class="image-gallery">
@@ -58,6 +61,26 @@
         min-height: 100vh; /* Asegura que el fondo cubra toda la altura de la ventana */
     }
 
+    .title-with-image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .title-with-image h1 {
+        font-family: Monaco, monospace; /* Establece la fuente en monoespacio */
+        margin-right: 60px; /* Espacio entre el título y la imagen */
+    }
+
+    .mono-image {
+        max-width: 150px; /* Ajusta el tamaño de la imagen */
+        height: auto;
+    }
+
+    h3, p {
+        font-family: Helvetica, sans-serif; /* Establece la fuente en sans-serif Helvetica para h5 y p */
+    }
+
     .image-gallery {
         display: flex;
         justify-content: center;
@@ -69,21 +92,15 @@
         text-align: center;
     }
 
-        .image-item img {
-            max-width: 200px; /* Ajusta el tamaño de las imágenes */
-            height: auto;
-        }
+    .image-item img {
+        max-width: 200px; /* Ajusta el tamaño de las imágenes */
+        height: auto;
+    }
 
-        .image-item p {
-            margin-top: 10px;
-            font-weight: bold;
-            font-family: Helvetica, sans-serif;
-            color: black; /* Cambia el color del texto para que sea visible sobre el fondo */
-        }
-        h1 {
-        font-family: Monaco, monospace; /* Establece la fuente en monoespacio */
-        }
-        h5, p {
-        font-family: Helvetica, sans-serif; /* Establece la fuente en sans-serif Helvetica para h5 y p */
-        }
+    .image-item p {
+        margin-top: 10px;
+        font-weight: bold;
+        font-family: Helvetica, sans-serif;
+        color: black; /* Cambia el color del texto para que sea visible sobre el fondo */
+    }
 </style>

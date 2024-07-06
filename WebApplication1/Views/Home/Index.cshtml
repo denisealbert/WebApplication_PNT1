@@ -3,6 +3,69 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Bienvenido a Plastic Monkey</h1>
+    <p>Mandanos tu proyecto personalizado. Te mostramos algunos diseños disponibles.</p>
+
+    <div class="image-gallery">
+        <div class="image-item">
+            <img src="~/images/Yoshi.webp" alt="Yoshi">
+            <p>Yoshi</p>
+        </div>
+        <div class="image-item">
+            <img src="~/images/GokuSuperSaiyajin.webp" alt="Goku Super Saiyajin">
+            <p>Goku Super Saiyajin</p>
+        </div>
+        <div class="image-item">
+            <img src="~/images/PegasusSeiya.webp" alt="Pegasus Seiya">
+            <p>Pegasus Seiya</p>
+        </div>
+        <div class="image-item">
+            <img src="~/images/MarioFire.webp" alt="Mario Fire">
+            <p>Mario Fire</p>
+        </div>
+        <div class="image-item">
+            <img src="~/images/OrangeYoshi.webp" alt="Yoshi">
+            <p>Orange Yoshi</p>
+        </div>
+        <div class="image-item">
+            <img src="~/images/Luigi.webp" alt="Goku Super Saiyajin">
+            <p>Luigi</p>
+        </div>
+        <div class="image-item">
+            <img src="~/images/BulletBill.webp" alt="Pegasus Seiya">
+            <p>Bullet Bill</p>
+        </div>
+        <div class="image-item">
+            <img src="~/images/Daisy.webp" alt="Mario Fire">
+            <p>Daisy</p>
+        </div>
+        <div class="image-item">
+            <img src="~/images/BlackShyGuy.webp" alt="Mario Fire">
+            <p>Black Shy Guy</p>
+        </div>
+    </div>
 </div>
+
+<style>
+    .image-gallery {
+        display: flex;
+        justify-content: center;
+        gap: 20px; /* Ajusta la distancia entre las imágenes */
+        flex-wrap: wrap;
+    }
+
+    .image-item {
+        text-align: center;
+    }
+
+        .image-item img {
+            max-width: 200px; /* Ajusta el tamaño de las imágenes */
+            height: auto;
+        }
+
+        .image-item p {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+</style>
+
